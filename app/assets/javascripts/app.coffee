@@ -26,6 +26,8 @@ toc.filter('asDuration', ->
 controllers = angular.module('controllers',[])
 controllers.controller("TimesController", [ '$scope', '$routeParams', '$location', '$resource', '$interval'
   ($scope, $routeParams, $location, $resource, $interval) ->
+    $scope.times = []
+
     timer = null
 
     TrackedTime = $resource('/tracked_times.json', { },
