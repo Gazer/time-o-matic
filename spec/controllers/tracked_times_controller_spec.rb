@@ -10,4 +10,12 @@ describe TrackedTimesController do
     end
   end
 
+  describe "DELETE" do
+    it "remove a tracked time from the database" do
+      time = TrackedTime.create name: 'Some Tracked Time'
+
+      delete 'destroy', id: time.id, format: :json
+      expect(TrackedTime.count).to eq(0)
+    end
+  end
 end

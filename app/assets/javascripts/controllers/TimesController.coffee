@@ -37,4 +37,10 @@ controllers.controller("TimesController", [ '$scope', '$routeParams', '$location
       ,
       onError
       )
+
+    $scope.delete = (id) ->
+      Restangular.one("tracked_times", id).remove();
+      trackedTimes.getList().then (results) ->
+        $scope.times = results
+
 ])

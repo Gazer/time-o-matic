@@ -30,11 +30,11 @@ class TrackedTimesController < ApplicationController
   #   head :no_content
   # end
   #
-  # def destroy
-  #   recipe = Recipe.find(params[:id])
-  #   recipe.destroy
-  #   head :no_content
-  # end
+  def destroy
+    time = TrackedTime.find(params[:id])
+    time.destroy
+    head :no_content
+  end
 
   private
     def time_params

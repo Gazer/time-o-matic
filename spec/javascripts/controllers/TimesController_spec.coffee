@@ -71,3 +71,32 @@ describe "TimesController", ->
     it 'fetch the current active track', ->
       httpBackend.flush()
       expect(scope.current.plain()).toEqualData(current)
+
+  describe 'delete' ,->
+    times = [
+      {
+        id: 1
+        name: 'Tracked time 1'
+        duration: 100
+        running: false
+      },
+      {
+        id: 2
+        name: 'Tracked time 2'
+        duration: 200
+        running: false
+      }
+    ]
+    beforeEach ->
+      setupController()
+      httpBackend.flush()
+      request = new RegExp("\/tracked_times/.*")
+      httpBackend.expectDELETE(request).respond(204)
+      request = new RegExp("\/tracked_times")
+      httpBackend.expectGET(request).respond(times)
+
+    it 'posts to the backend', ->
+      scope.delete(1)
+      httpBackend.flush()
+
+      expect(scope.times.plain()).toEqualData(times)
