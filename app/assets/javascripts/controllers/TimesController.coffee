@@ -7,14 +7,15 @@ controllers.controller("TimesController", [ '$scope', '$routeParams', '$location
     onError = (_httpResponse)-> console.log "Something went wrong"
 
     # Scope Initialization
+    $scope.current = null
     $scope.times = []
     $scope.newTrackedTime = {}
     $scope.flash_error = null
     $scope.times = trackedTimes.getList().$object
 
-    trackedTimes.customGET("current").then (result) ->
+    $scope.current = trackedTimes.current().then (result) ->
       $scope.current = result
-      if (result)
+      if $scope.current
         timer = $interval( ->
             $scope.current.duration += 1
           , 1000)
@@ -37,16 +38,13 @@ controllers.controller("TimesController", [ '$scope', '$routeParams', '$location
           $scope.flash_error = error.data.error
       )
 
-    $scope.stopTracking = ->
-      trackedTimes.customPUT(null, "stop").then(
-        (result) ->
-          $scope.current = null
-          $interval.cancel(timer);
-          $scope.times = trackedTimes.getList().$object
-        onError
-      )
+    $scope.stopTracking = ()->
+      $interval.cancel(timer);
+      stopped = trackedTimes.stop().$object
+      $scope.current = null
+      $scope.times.unshift(stopped)
 
     $scope.delete = (id) ->
-      Restangular.one("tracked_times", id).remove();
-      $scope.times = trackedTimes.getList().$object
+      Restangular.one("tracked_times", id).remove()
+      $scope.times = $scope.times.filter (item) -> item.id != id
 ])

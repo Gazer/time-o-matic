@@ -17,6 +17,14 @@ toc.config([ '$routeProvider',
 
 toc.config((RestangularProvider) ->
   RestangularProvider.setDefaultHeaders({ "Accept": "application/json" });
+
+  RestangularProvider.addElementTransformer 'tracked_times', true, (user) ->
+    user.addRestangularMethod('current', 'get', 'current');
+    user
+
+  RestangularProvider.addElementTransformer 'tracked_times', true, (user) ->
+    user.addRestangularMethod('stop', 'put', 'stop');
+    user
 )
 
 toc.filter('asDuration', ->

@@ -7,13 +7,12 @@ class TrackedTimesController < ApplicationController
 
   def current
     @time = TrackedTime.current
-    head json: {}, status: 404 unless @time
+    render json: nil unless @time
   end
 
   def stop
     @time = TrackedTime.current
     @time.stop! if @time
-    head :no_content
   end
 
   def create

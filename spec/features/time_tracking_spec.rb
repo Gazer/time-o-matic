@@ -20,14 +20,14 @@ feature "Time tracking", js: true do
     expect(page).to have_content("Empezar")
   end
 
-  scenario "stop current track" do
+  scenario "remove a track" do
     visit '/'
     fill_in "name", with: "track name"
     click_on "Empezar"
     click_on "Finalizar"
     click_on 'Borrar'
 
-    expect(page).to_not have_content('my tracking')
+    expect(page).to_not have_content('track name')
   end
 
 end
