@@ -6,7 +6,7 @@ describe TrackedTime do
 
     expect {
       TrackedTime.create! name: 'Other'
-    }.to raise_error
+    }.to raise_error(ActiveRecord::RecordInvalid)
   end
 
   it 'can be stopped' do

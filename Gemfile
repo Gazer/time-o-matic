@@ -24,7 +24,7 @@ gem 'bower-rails'
 gem 'angular-rails-templates'
 
 group :test, :development do
-  gem "rspec-rails", "~> 2.0"
+  gem 'rspec-rails', '~> 3.1'
   gem "factory_girl_rails", "~> 4.0"
   gem "capybara"
   gem "database_cleaner"
