@@ -15,7 +15,7 @@ describe TrackedTimesController do
       time = TrackedTime.create name: 'Some Tracked Time'
 
       delete 'destroy', id: time.id, format: :json
-      expect(TrackedTime.count).to eq(0)
+      expect(TrackedTime.where(id: time.id)).to_not exist
     end
   end
 end
