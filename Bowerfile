@@ -1,6 +1,6 @@
 asset 'angular'
 asset 'angular-route'
-asset 'angular-resource'
+asset 'restangular'
 asset 'momentjs'
 asset 'bootstrap-sass-official'
 asset 'angular-mocks'

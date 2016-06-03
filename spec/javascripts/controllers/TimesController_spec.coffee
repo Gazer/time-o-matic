@@ -7,18 +7,18 @@ describe "TimesController", ->
   httpBackend  = null
 
   setupController = (results, current) ->
-    inject(($location, $routeParams, $rootScope, $resource, $httpBackend, $controller)->
+    inject(($location, $routeParams, $rootScope, Restangular, $httpBackend, $controller)->
       scope       = $rootScope.$new()
       location    = $location
-      resource    = $resource
+      resource    = Restangular
       routeParams = $routeParams
 
       # capture the injected service
       httpBackend = $httpBackend
-      request = new RegExp("\/tracked_times.json")
+      request = new RegExp("\/tracked_times")
       httpBackend.expectGET(request).respond(results || [])
 
-      request = new RegExp("\/tracked_times/current.json")
+      request = new RegExp("\/tracked_times/current")
       httpBackend.expectGET(request).respond(current || undefined)
 
 
@@ -66,8 +66,8 @@ describe "TimesController", ->
 
     it 'calls the back-end', ->
       httpBackend.flush()
-      expect(scope.times).toEqualData(times)
+      expect(scope.times.plain()).toEqualData(times)
 
     it 'fetch the current active track', ->
       httpBackend.flush()
-      expect(scope.current).toEqualData(current)
+      expect(scope.current.plain()).toEqualData(current)

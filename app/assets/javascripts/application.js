@@ -15,6 +15,7 @@
 //= require momentjs/moment.js
 //= require angular/angular
 //= require angular-route/angular-route
-//= require angular-resource/angular-resource
+//= require lodash/lodash.js
+//= require restangular/dist/restangular.js
 //= require angular-rails-templates
 //= require_tree .
