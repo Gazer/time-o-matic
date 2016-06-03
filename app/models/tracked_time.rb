@@ -25,8 +25,8 @@ class TrackedTime < ActiveRecord::Base
     end
   end
 
-  private
-    def active_track
-      errors.add(:base, "you have a track already running") if TrackedTime.where("id != ?", id).active.any?
-    end
+private
+  def active_track
+    errors.add(:base, "you have a track already running") if TrackedTime.where("id != ?", id || 0).active.any?
+  end
 end
