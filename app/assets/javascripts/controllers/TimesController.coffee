@@ -7,8 +7,7 @@ controllers.controller("TimesController", [ '$scope', '$routeParams', '$location
 
     timer = null
 
-    trackedTimes.getList().then (results) ->
-      $scope.times = results
+    $scope.times = trackedTimes.getList().$object
 
     trackedTimes.customGET("current").then (result) ->
       $scope.current = result
@@ -32,15 +31,12 @@ controllers.controller("TimesController", [ '$scope', '$routeParams', '$location
       trackedTimes.customPUT(null, "stop").then((result) ->
         $scope.current = null
         $interval.cancel(timer);
-        trackedTimes.getList().then (results) ->
-          $scope.times = results
+        $scope.times = trackedTimes.getList().$object
       ,
       onError
       )
 
     $scope.delete = (id) ->
       Restangular.one("tracked_times", id).remove();
-      trackedTimes.getList().then (results) ->
-        $scope.times = results
-
+      $scope.times = trackedTimes.getList().$object
 ])
