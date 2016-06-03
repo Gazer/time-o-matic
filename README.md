@@ -69,7 +69,7 @@ Open `http://localhost:3000` on your browser and start tracking!
 Bonus: Run using Docker!
 ========================
 
-Install docker and docker-componse. If you on Mac or Windows you alse need to install docker-machine.
+Install docker and docker-compose. If you on Mac or Windows you also need to install docker-machine.
 
 Then, just be awesome :) :
 
