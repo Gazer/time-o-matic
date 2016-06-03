@@ -14,8 +14,10 @@ describe TrackedTimesController do
     it "remove a tracked time from the database" do
       time = TrackedTime.create name: 'Some Tracked Time'
 
-      delete 'destroy', id: time.id, format: :json
-      expect(TrackedTime.exists?(time.id)).to eq(false)
+      expect {
+        delete 'destroy', id: time.id, format: :json
+        ActiveRecord::Base.connection.query_cache.clear
+      }.to change { TrackedTime.count() }.from(1).to(0)
     end
   end
 end
