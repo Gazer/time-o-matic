@@ -1,3 +1,7 @@
 language: ruby
 rvm:
   - 2.2
+before_script:
+  - psql -c 'create database toc_test;' -U postgres
+services:
+  - postgresql
