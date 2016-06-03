@@ -3,5 +3,7 @@ rvm:
   - 2.2
 before_script:
   - psql -c 'create database toc_test;' -U postgres
+  - rake db:migrate
+  - rake db:setup
 services:
   - postgresql
