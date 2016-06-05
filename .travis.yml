@@ -17,5 +17,8 @@ before_script:
   - psql -c 'create database toc_test;' -U postgres
   - bin/rake db:migrate
   - bin/rake db:setup
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
 services:
   - postgresql

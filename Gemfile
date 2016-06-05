@@ -19,7 +19,8 @@ group :test, :development do
   gem "capybara"
   gem "database_cleaner"
   gem 'poltergeist'
-  gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'selenium-webdriver'
+  gem 'phantomjs' #, :require => 'phantomjs/poltergeist'
   gem 'teaspoon-jasmine'
 end
 
