@@ -72,6 +72,17 @@ describe "TimesController", ->
       httpBackend.flush()
       expect(scope.current.plain()).toEqualData(current)
 
+  describe 'copy', ->
+    beforeEach ->
+      setupController(null, {id: 3, name: 'a name', duration: 1, running: false})
+      request = new RegExp("\/tracked_times/.*/copy")
+      httpBackend.expectPUT(request).respond(204, {id: 4, name: 'a name', duration: 1, running: true})
+
+    it 'can start a new track copying an old one', ->
+      scope.copy(3)
+      httpBackend.flush()
+      expect(scope.current.name).toBe('a name')
+
   describe 'delete' ,->
     times = [
       {

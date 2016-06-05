@@ -47,4 +47,13 @@ controllers.controller("TimesController", [ '$scope', '$routeParams', '$location
     $scope.delete = (id) ->
       Restangular.one("tracked_times", id).remove()
       $scope.times = $scope.times.filter (item) -> item.id != id
+
+    $scope.copy = (id) ->
+      Restangular.one("tracked_times", id).copy().then (result)->
+          $scope.current = result
+          timer = $interval( ->
+              $scope.current.duration += 1
+            , 1000)
+        (error) ->
+          $scope.flash_error = error.data.error
 ])

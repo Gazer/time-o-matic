@@ -23,12 +23,12 @@ class TrackedTimesController < ApplicationController
     end
   end
 
-  # def update
-  #   recipe = Recipe.find(params[:id])
-  #   recipe.update_attributes(params.require(:recipe).permit(:name,:instructions))
-  #   head :no_content
-  # end
-  #
+  def copy
+    @time = TrackedTime.today.find(params[:id])
+    @dup = @time.copy!
+    render json: {error: "No se pudo crear una copia" }, status: 404 unless @dup
+  end
+
   def destroy
     time = TrackedTime.find(params[:id])
     time.destroy

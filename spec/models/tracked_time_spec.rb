@@ -25,4 +25,26 @@ describe TrackedTime do
     expect(TrackedTime.today).to include(time2)
     expect(TrackedTime.today).not_to include(time1)
   end
+
+  context 'copying' do
+    let(:time) { TrackedTime.create name: 'Some Tracked Time', end_at: 1.second.from_now }
+
+    before(:each) { @copy = time.copy! }
+
+    it 'copy the name' do
+      expect(@copy.name).to eq(time.name)
+    end
+
+    it 'creates a copy' do
+      expect(@copy.id).to_not eq(time.id)
+    end
+
+    it 'creates a running track' do
+      expect(@copy).to be_running
+    end
+
+    it "can't copy if there is another active track" do
+      expect(@copy.copy!).to eq(nil)
+    end
+  end
 end

@@ -25,6 +25,11 @@ toc.config((RestangularProvider) ->
   RestangularProvider.addElementTransformer 'tracked_times', true, (user) ->
     user.addRestangularMethod('stop', 'put', 'stop');
     user
+
+  RestangularProvider.addElementTransformer 'tracked_times', false, (user) ->
+    user.addRestangularMethod('copy', 'put', 'copy');
+    user
+
 )
 
 toc.filter('asDuration', ->
