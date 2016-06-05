@@ -1,0 +1,42 @@
+header.row
+  h1.text-center.col-md-6.col-md-offset-3 Time-o-Matic
+
+article.col-md-6.col-md-offset-3.col-sm-12.alert.alert-danger ng-click="clearErrors()" ng-if="flash_error"
+  | {{flash_error}}
+
+section.row
+  #currentTimer.col-md-6.col-md-offset-3.tracked_time.well ng-if="current"
+    h1.timer.text-center
+      | {{current.duration | asDuration}}
+    h4.name.text-center
+      | {{current.name}}
+    button.btn.btn-primary.btn-lg ng-click="stopTracking()"
+      | Finalizar
+
+  form ng-if="!current"
+    .form-group.col-md-6.col-md-offset-3
+      label.sr-only for="name"  Tarea
+      input#name.form-control autofocus="" ng-model="newTrackedTime.name" placeholder=("Nombre de la tarea a realizar") type="text" /
+    .form-group.col-md-6.col-md-offset-3.text-center
+      button.btn.btn-primary.btn-lg ng-click="startTracking(newTrackedTime)"  Empezar
+
+hr/
+
+section.row ng-if="times"
+  h1.h2.col-md-6.col-md-offset-3
+    | Tareas de hoy
+    small.pull-right
+      | {{times | asTotalDuration}} hs
+
+  ul.list-unstyled
+    li ng-repeat=("time in times")
+      section.well.col-md-6.col-md-offset-3
+        h1.h3.col-md-6.text-right style=("margin-top: 0")
+          | {{time.name}}
+          small
+            | {{time.duration | asDuration}}
+        .col-md-6
+          button.btn.btn-info> ng-click="copy(time.id)" ng-disabled="current"
+            | Continuar
+          button.btn.btn-danger> ng-click="delete(time.id)"
+            | Borrar
