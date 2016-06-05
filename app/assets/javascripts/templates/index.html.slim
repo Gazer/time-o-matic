@@ -15,7 +15,8 @@ section.row
 
   form ng-if="!current"
     .form-group.col-md-6.col-md-offset-3
-      label.sr-only for="name"  Tarea
+      label.sr-only for="name"
+        | Tarea
       input#name.form-control autofocus="" ng-model="newTrackedTime.name" placeholder=("Nombre de la tarea a realizar") type="text" /
     .form-group.col-md-6.col-md-offset-3.text-center
       button.btn.btn-primary.btn-lg ng-click="startTracking(newTrackedTime)"  Empezar
