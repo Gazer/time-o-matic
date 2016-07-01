@@ -1,4 +1,4 @@
-class TrackedTime < ActiveRecord::Base
+class TrackedTime < ApplicationRecord
   scope :today, -> { where('end_at IS NOT NULL AND created_at >= ?', Time.now.beginning_of_day).order('created_at desc') }
   scope :active, -> { where('end_at IS NULL') }
 

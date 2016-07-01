@@ -4,7 +4,7 @@ describe TrackedTimesController do
 
   describe "GET 'index'" do
     it "returns http success" do
-      get 'index', format: :json
+      get 'index', params: {format: :json}
 
       expect(response).to be_success
     end
@@ -14,7 +14,7 @@ describe TrackedTimesController do
     it "remove a tracked time from the database" do
       time = TrackedTime.create name: 'Some Tracked Time'
 
-      delete 'destroy', id: time.id, format: :json
+      delete :destroy, params: {id: time.id, format: :json}
       expect(TrackedTime.exists?(time.id)).to eq(false)
     end
   end
@@ -23,7 +23,7 @@ describe TrackedTimesController do
     it "creates a copy of a finished tracked time" do
       time = TrackedTime.create name: 'Some Tracked Time', end_at: 1.second.from_now
       expect {
-        post 'copy', id: time.id, format: :json
+        post 'copy', params: {id: time.id, format: :json}
       }.to change { TrackedTime.count }.from(1).to(2)
     end
   end

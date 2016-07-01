@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.6'
+gem 'rails', '5.0.0'
 gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -20,7 +20,7 @@ group :test, :development do
   gem "capybara"
   gem "database_cleaner"
   gem 'poltergeist'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '= 2.53.4'
   gem 'phantomjs' #, :require => 'phantomjs/poltergeist'
   gem 'teaspoon-jasmine'
 end

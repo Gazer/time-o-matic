@@ -3,7 +3,7 @@ Time-o-Matic
 
 Little Rails & AngularJS app to track time!
 
-More info about the building process and how to write tests for this kind of app can be found on http://angular-rails.com/crud_recipe.html
+More info about the building process and how to write tests for this kind of app can be found on http://angular-rails.com/
 
 [![Build Status](https://travis-ci.org/Gazer/time-o-matic.svg?branch=master)](https://travis-ci.org/Gazer/time-o-matic)
 
