@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.1.0.beta1'
+gem 'rails', '5.1.0.rc1'
 gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0.6'
 gem 'uglifier', '>= 1.3.0'
@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'sass', '3.2.19'
 gem 'bower-rails'
-gem 'angular-rails-templates'
+gem 'angular-rails-templates'#, '>= 1.0.2'
 gem 'slim'
 
 group :test, :development do
