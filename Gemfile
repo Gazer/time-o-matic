@@ -20,7 +20,7 @@ group :test, :development do
   gem "capybara"
   gem "database_cleaner"
   gem 'poltergeist'
-  gem 'selenium-webdriver', '= 2.53.4'
+  gem 'selenium-webdriver', '~> 3.3.0'
   gem 'phantomjs' #, :require => 'phantomjs/poltergeist'
   gem 'teaspoon-jasmine'
 end

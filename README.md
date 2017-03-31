@@ -15,6 +15,7 @@ Tested with :
 * Ruby version : 2.2
 * Bower version : 1.7.9
 * NodeJS version : 5.8.0
+* geckodriver (to run JS tests)
 
 Try it!
 =======
