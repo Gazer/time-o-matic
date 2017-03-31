@@ -1,4 +1,4 @@
-class CreateTrackedTimes < ActiveRecord::Migration
+class CreateTrackedTimes < ActiveRecord::Migration[5.0]
   def change
     create_table :tracked_times do |t|
       t.string :name
